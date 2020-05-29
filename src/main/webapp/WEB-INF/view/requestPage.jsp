@@ -26,7 +26,7 @@
 		</c:forEach>
 	</table>
 	<button type="button">Approve</button>
-	<button type="button">Deny</button>
+	<button type="button">Deny</button><br>
 	
 <a href="home">Get back home</a>
 
