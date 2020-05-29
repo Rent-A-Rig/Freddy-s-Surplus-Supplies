@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @Configuration
-@ComponentScan(basePackages = {"cova.rar.service", "cova.rar.dao", "cova.rar.controller",
+@ComponentScan(basePackages = {"cova.fss.service", "cova.fss.dao", "cova.fss.controller",
 		"org.springframework.jdbc.datasource.DriverManagerDataSource",
 		"org.springframework.jdbc.core.JdbcTemplate"})
 public class BeanConfig {
@@ -30,6 +30,11 @@ public class BeanConfig {
 	@Bean 
 	public JdbcTemplate getJdbcTemplate() {
 		return new JdbcTemplate(getDataSource());
+	}
+	
+	@Bean
+	public RequestService getRequestService() {
+		return new RequestService();
 	}
 	
 

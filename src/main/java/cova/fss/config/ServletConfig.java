@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan("cova.rar.controller")
+@ComponentScan("cova.fss.controller")
 public class ServletConfig implements WebMvcConfigurer {
 	
 	public void configureViewResolvers(ViewResolverRegistry registry) {
