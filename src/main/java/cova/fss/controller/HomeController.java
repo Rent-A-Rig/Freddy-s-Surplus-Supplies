@@ -8,6 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	ProductService productService;
 
 
 	@RequestMapping(value = {"/activeRequest"})
@@ -18,7 +21,10 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/previousRequest"})
 	public ModelAndView previousR() {
-		return new ModelAndView("requestPage", requests(""));
+
+		List<RequestedInventory> requests = requestService.getPreviousRequests();
+		
+		return new ModelAndView("requestPage", "requests", requests);
 	}
 	
 	//return active request reutrn newmodelview

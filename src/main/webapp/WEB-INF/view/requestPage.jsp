@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,33 +10,20 @@
 <body>
 
 	<h2>HTML Table</h2>
-
+<!-- model data = "requests" type = List of requestedInventory -->
 	<table>
 		<tr>
 			<th>ProductID</th>
 			<th>Product Name</th>
 			<th>Quantity</th>
 		</tr>
+		<c:forEach var="inventory" items="${requests}">
 		<tr>
-			<td>${inventory.productID}</td>
-			<td>${inventory.productName }</td>
-			<td>${inventory.quantity}</td>
+			<td>${inventory.product_id}</td>
+			<td>${inventory.product_name }</td>
+			<td>${inventory.request_qty}</td>
 		</tr>
-		<tr>
-			<td>2</td>
-			<td>Desktop</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Desktop</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Desktop</td>
-			<td>20</td>
-		</tr>
+		</c:forEach>
 	</table>
 	<button type="button">Approve</button>
 	<button type="button">Deny</button>
