@@ -3,6 +3,9 @@ package cova.fss.config;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import cova.fss.service.RequestService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +23,10 @@ public class BeanConfig {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dmds = new DriverManagerDataSource();
 		dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dmds.setUrl("jdbc:mysql://localhost/rentarig?useSSL=false");
+		dmds.setUrl("jdbc:mysql://localhost/freddysurplussupplies?useSSL=false");
 		dmds.setUsername("root");
 		dmds.setPassword("root");
-		dmds.setSchema("rentarig");
+		dmds.setSchema("freddysurplussupplies");
 		return dmds;
 	}
 	
