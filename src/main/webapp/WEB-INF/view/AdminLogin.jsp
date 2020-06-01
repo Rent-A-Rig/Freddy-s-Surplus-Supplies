@@ -26,7 +26,7 @@
 			<div class="row main">
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
-	               		<h1 class="title">Freddy's Surplus Supply</h1>
+	               		<h1 class="title">Freddy's Surplus Supplies</h1>
 	               		<hr />
 	               	</div>
 	            </div> 
@@ -37,7 +37,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Username"/>
 								</div>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Password"/>
 								</div>
 							</div>
 						</div>
