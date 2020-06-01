@@ -9,12 +9,6 @@ public class RequestService {
 	
 	@Autowired
 	RequestDao requestDao;
-    
-//    public List<RequestedInventory> getPreviousRequests() {
-//        
-//        return requestDao.getRequests("previous");
-//        
-//    }
 	
 	public boolean addRequestedInventory(RequestedInventory ri) {
 		int rows = 0;
@@ -32,5 +26,17 @@ public class RequestService {
 		else {
 			return false;
 		}
+	}
+	
+    public List<RequestedInventory> getPreviousRequests() {
+        
+        return requestDao.getRequests("previous");
+        
+    }
+
+	public List<RequestedInventory> getActiveRequests() {
+		
+		return requestDao.getRequests("active");
+
 	}
 }
