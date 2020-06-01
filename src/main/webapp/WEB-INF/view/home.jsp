@@ -10,7 +10,7 @@
 
 	<h1>Freddy's Surplus Supply</h1>
 	
-	<a href="activeRequest">View Active Requests</a>
+	<a href="activeRequest">View Active Requests</a><br>
 	<a href="previousRequest">View Previous Requests</a>
 	
 </body>
