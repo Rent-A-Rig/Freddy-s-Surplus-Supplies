@@ -18,7 +18,13 @@ public class HomeController {
 	@Autowired
 	RequestService requestService;
 	
-	@RequestMapping(value = {"/home", "/"})
+	@RequestMapping(value = {"/adminlogin", "/"})
+	public ModelAndView login() {
+		return new ModelAndView("AdminLogin");
+	}
+
+	
+	@RequestMapping(value = {"/home"})
 	public ModelAndView home() {
 		return new ModelAndView("home");
 	}
