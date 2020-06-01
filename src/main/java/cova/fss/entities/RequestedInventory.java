@@ -9,11 +9,9 @@ public class RequestedInventory {
 	private String product_name;
 	private int request_qty;
 	private Date request_date;
+	private boolean fulfilled;
 	
-
-	public RequestedInventory() {
-		
-	}
+	public RequestedInventory() {};
 	
 	public String getProduct_name() {
 		return product_name;
@@ -63,6 +61,6 @@ public class RequestedInventory {
 		this.fulfilled = fulfilled;
 	}
 
-	private boolean fulfilled;
+	
 
 }

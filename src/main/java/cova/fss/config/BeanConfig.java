@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @Configuration
-@ComponentScan(basePackages = {"cova.fss.service", "cova.fss.dao", "cova.fss.controller",
+@ComponentScan(basePackages = {"cova.fss.service", "cova.fss.dao", "cova.fss.controller", "cova.fss.rest",
 		"org.springframework.jdbc.datasource.DriverManagerDataSource",
 		"org.springframework.jdbc.core.JdbcTemplate"})
 public class BeanConfig {
