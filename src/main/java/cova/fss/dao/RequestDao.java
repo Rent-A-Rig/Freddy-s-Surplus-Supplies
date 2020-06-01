@@ -36,7 +36,6 @@ public class RequestDao {
 	
 	class RequestMapper implements RowMapper<RequestedInventory> {
 
-		@Override
 		public RequestedInventory mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 			RequestedInventory ri = new RequestedInventory();
