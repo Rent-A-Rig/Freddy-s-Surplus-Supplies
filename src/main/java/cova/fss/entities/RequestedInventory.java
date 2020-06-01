@@ -13,8 +13,7 @@ public class RequestedInventory {
 
 	public RequestedInventory() {
 		
-	}
-	
+	} 
 	public String getProduct_name() {
 		return product_name;
 	}
