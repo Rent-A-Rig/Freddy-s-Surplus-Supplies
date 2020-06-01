@@ -1,29 +1,33 @@
 package cova.fss.dao;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import cova.fss.entities.RequestedInventory;
 
 public class RequestDao {
 
-	public void addRequestedInventory(RequestedInventory ri) {
-		
-		System.out.println("REQUEST DAO - addRequestedInventory");
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+
+	public int addRequestedInventory(RequestedInventory ri) {
+		String sql = "insert into requestedInventory (product_id, request_qty, request_date, fulfilled)"
+				+ " values(?,?,?,?)";
+
+		return jdbcTemplate.update(sql, new Object[] {ri.getProduct_id(), ri.getRequest_qty(),
+				ri.getRequest_date(), false});
+
 	}
 
-//	public static List<RequestedInventory> getRequests(String activeRequests) {
-//        
-//        if (activeRequests = "active")
-//        {
-//            String sql = "select * from requestedInventory where FULFILLED = 0;";
-//        }
-//        else {
-//            String sql = "select * from requestedInventory where FULFILLED = 1;";
-//        }
-//        
-//        List<RequestedInventory> requests = JdbcTemplate.query(sql, new RequestMapper())
-//    }
+	public int updateRequestedInventory(RequestedInventory ri) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public boolean existingRequest(RequestedInventory ri) {
+		return true; // update this to check db for existing requests
+	}
 
-	
-	
+
 }

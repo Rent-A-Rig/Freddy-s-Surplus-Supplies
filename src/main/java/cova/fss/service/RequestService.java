@@ -16,7 +16,21 @@ public class RequestService {
 //        
 //    }
 	
-	public void addRequestedInventory(RequestedInventory ri) {
-		requestDao.addRequestedInventory(ri);
+	public boolean addRequestedInventory(RequestedInventory ri) {
+		int rows = 0;
+		boolean exists = requestDao.existingRequest(ri.getProduct_id());
+		if (exists) {
+			rows = requestDao.updateRequestedInventory(ri);
+		}
+		else {
+			rows = requestDao.addRequestedInventory(ri);
+		}	
+	
+		if (rows == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
