@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import cova.fss.dao.RequestDao;
 import cova.fss.service.RequestService;
 
 import org.springframework.context.annotation.Bean;
@@ -13,7 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @Configuration
-@ComponentScan(basePackages = {"cova.fss.service", "cova.fss.dao", "cova.fss.controller",
+@ComponentScan(basePackages = {"cova.fss.service", "cova.fss.dao", "cova.fss.controller", "cova.fss.rest",
 		"org.springframework.jdbc.datasource.DriverManagerDataSource",
 		"org.springframework.jdbc.core.JdbcTemplate"})
 public class BeanConfig {
@@ -38,6 +39,11 @@ public class BeanConfig {
 	@Bean
 	public RequestService getRequestService() {
 		return new RequestService();
+	}
+	
+	@Bean
+	public RequestDao getRequestDao() {
+		return new RequestDao();
 	}
 	
 
