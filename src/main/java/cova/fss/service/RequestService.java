@@ -12,8 +12,10 @@ public class RequestService {
 	
 	public boolean addRequestedInventory(RequestedInventory ri) {
 		int rows = 0;
-		boolean exists = requestDao.existingRequest(ri.getProduct_id());
-		if (!exists) {
+		RequestedInventory existingRequest = requestDao.getExistingRequest(ri.getProduct_id());
+		if (null != existingRequest) {
+			ri.setRequest_qty(ri.getRequest_qty() + existingRequest.getRequest_qty());
+			ri.setRequest_id(existingRequest.getRequest_id());
 			rows = requestDao.updateRequestedInventory(ri);
 		}
 		else {

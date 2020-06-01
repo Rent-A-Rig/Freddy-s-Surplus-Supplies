@@ -9,6 +9,7 @@ import cova.fss.entities.RequestedInventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class RequestDao {
 
@@ -25,12 +26,21 @@ public class RequestDao {
 	}
 
 	public int updateRequestedInventory(RequestedInventory ri) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update requestedInventory SET request_qty = " + ri.getRequest_qty() + " WHERE request_id = " + ri.getRequest_id();
+		return jdbcTemplate.update(sql);
 	}
 	
-	public boolean existingRequest(String string) {
-		return true; // update this to check db for existing requests
+	public RequestedInventory getExistingRequest(String prodID) {
+		
+		String sql = "select * from requestedInventory where product_id = '" + prodID + "' and fulfilled = " + false;
+		List<RequestedInventory> riList = jdbcTemplate.query(sql, new RequestMapper());
+		if (riList.size() == 0) {
+			return null;
+		}
+		else {
+			return riList.get(0);
+		}
+		
 	}
 
 
