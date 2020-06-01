@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS requestedInventory;
 CREATE TABLE requestedInventory (
 
 REQUEST_ID INT NOT NULL auto_increment,
+PRODUCT_NAME VARCHAR(30) NOT NULL,
 PRODUCT_ID varchar(30) NOT NULL references inventory (PRODUCT_ID),
 REQUEST_QTY INT NOT NULL,
 REQUEST_DATE DATE NOT NULL,
@@ -31,13 +32,11 @@ VALUES
 ('333', 'romy','crust', 100);
 
 
-INSERT INTO requestedInventory (request_id, product_id, request_qty, request_date, fulfilled)  
+INSERT INTO requestedInventory (request_id, PRODUCT_NAME, product_id, request_qty, request_date, fulfilled)  
 VALUES 
-(request_id, '111', 50, '2020-03-06', 1),
+(request_id, "joe", '111', 50, '2020-03-06', 1),
 
-(request_id, '222', 50, '2020-06-10', 0),
+(request_id, "joe2", '222', 50, '2020-06-10', 0),
 
-(request_id, '333', 50, '2020-02-01', 1);
-
-
+(request_id, "joe3",'333', 50, '2020-02-01', 1);
 
