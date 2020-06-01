@@ -12,10 +12,10 @@ public class RequestDao {
 	JdbcTemplate jdbcTemplate;
 
 	public int addRequestedInventory(RequestedInventory ri) {
-		String sql = "insert into requestedInventory (product_id, request_qty, request_date, fulfilled)"
-				+ " values(?,?,?,?)";
+		String sql = "insert into requestedInventory (product_name, product_id, request_qty, request_date, fulfilled)"
+				+ " values(?,?,?,?,?)";
 
-		return jdbcTemplate.update(sql, new Object[] {ri.getProduct_id(), ri.getRequest_qty(),
+		return jdbcTemplate.update(sql, new Object[] {ri.getProduct_name(), ri.getProduct_id(), ri.getRequest_qty(),
 				ri.getRequest_date(), false});
 
 	}
@@ -25,7 +25,7 @@ public class RequestDao {
 		return 0;
 	}
 	
-	public boolean existingRequest(RequestedInventory ri) {
+	public boolean existingRequest(String string) {
 		return true; // update this to check db for existing requests
 	}
 
