@@ -10,13 +10,9 @@ public class RequestedInventory {
 	private int request_qty;
 	private Date request_date;
 	
-	public RequestedInventory(int request_id, String product_id, int request_qty, Date request_date,
-			boolean fulfilled) {
-		this.request_id = request_id;
-		this.product_id = product_id;
-		this.request_qty = request_qty;
-		this.request_date = request_date;
-		this.fulfilled = fulfilled;
+
+	public RequestedInventory() {
+		
 	}
 	
 	public String getProduct_name() {

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h2>HTML Table</h2>
+	<h1>Orders</h1>
 <!-- model data = "requests" type = List of requestedInventory -->
 	<table>
 		<tr>
@@ -20,7 +20,7 @@
 		<c:forEach var="inventory" items="${requests}">
 		<tr>
 			<td>${inventory.product_id}</td>
-			<td>${inventory.product_name }</td>
+			<td>${inventory.product_name}</td>
 			<td>${inventory.request_qty}</td>
 		</tr>
 		</c:forEach>
