@@ -1,7 +1,5 @@
 package cova.fss.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,7 @@ public class HomeController {
 	public ModelAndView activeR() {
 		List<RequestedInventory> requests = requestService.getActiveRequests();
 		
-		return new ModelAndView("requestPage", "requests", requests);
+		return new ModelAndView("activeRequestPage", "requests", requests);
 	}
 	
 	
