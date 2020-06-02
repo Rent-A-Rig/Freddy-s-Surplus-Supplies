@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-=======
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
->>>>>>> refs/heads/master
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +35,6 @@
 			<th>
 			<th>
 		</tr>
-<<<<<<< HEAD
 		<c:forEach var="inventory" items="${requests}">
 			<form:form modelAttribute="returnRequest" action="requestInventory">
 				<tr>
@@ -58,23 +54,5 @@
 		</c:forEach>
 	</table>
 
-	<a href="home">Go back home</a>
-
-
-=======
-			<c:forEach var="inventory" items="${requests}">
-				<form:form modelAttribute="inventory" action="requestInventory">
-					<tr>
-						<td>${inventory.product_id}</td>
-						<td>${inventory.product_name}</td>
-						<td>${inventory.request_qty}</td>
-						<td><input type="submit" name="accept" value="accept"></td>
-						<td><input type="submit" name="deny" value="deny"></td>
-					</tr>
-				</form:form>
-			</c:forEach>
-		</table>
-	</div>
->>>>>>> refs/heads/master
 </body>
 </html>
