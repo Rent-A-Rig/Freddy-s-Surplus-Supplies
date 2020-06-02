@@ -4,14 +4,19 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cova.fss.entities.Inventory;
 import cova.fss.entities.RequestedInventory;
+import cova.fss.rest.service.RestRequestService;
 import cova.fss.entities.User;
+import cova.fss.service.InvnetoryService;
 import cova.fss.service.LoginService;
 import cova.fss.service.RequestService;
 
@@ -19,9 +24,16 @@ import cova.fss.service.RequestService;
 public class HomeController {
 
 	@Autowired
+	RestRequestService restRequestService;
+	
+	@Autowired
 	RequestService requestService;
+	
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	InvnetoryService inventoryService;
 
 	@RequestMapping(value = { "/adminlogin", "/" })
 
@@ -43,18 +55,40 @@ public class HomeController {
 	@RequestMapping(value = { "/activeRequest" })
 	public ModelAndView activeR() {
 		List<RequestedInventory> requests = requestService.getActiveRequests();
-
-		
-		return new ModelAndView("activeRequestPage", "requests", requests);
+		ModelAndView mv = new ModelAndView("activeRequestPage", "requests", requests);
+		mv.addObject("returnRequest", new RequestedInventory());
+		return mv;
 	}
 
 	@RequestMapping(value = { "/previousRequest" })
 	public ModelAndView previousR() {
 
 		List<RequestedInventory> requests = requestService.getPreviousRequests();
-
 		return new ModelAndView("requestPage", "requests", requests);
-
+		
+		
+	}
+	
+	@RequestMapping(value = "/requestInventory")
+	public ModelAndView acceptRequest(
+			@ModelAttribute("requestedInventory") RequestedInventory requestedInvnetory,
+			@RequestParam(required = false, value = "accept") String acceptFlag, 
+			@RequestParam(required = false, value = "deny") String denyFlag) {
+		
+		if (acceptFlag != null && denyFlag == null) {
+			requestedInvnetory.setFulfilled("ACCEPTED");
+		}
+		else if (denyFlag != null && acceptFlag == null) {
+			requestedInvnetory.setFulfilled("DENIED");
+		}
+		
+		ResponseEntity<Void> out = restRequestService.sendRequest(requestedInvnetory);
+		if (out.getStatusCode() == HttpStatus.ACCEPTED) {
+			inventoryService.updateInventory(requestedInvnetory.getProduct_id(), requestedInvnetory.getRequest_qty());
+			requestService.updateRequest(requestedInvnetory);
+		}
+		
+		return new ModelAndView("redirect:/activeRequest");
 	}
 	
 	@RequestMapping(value= {"/inventory"})

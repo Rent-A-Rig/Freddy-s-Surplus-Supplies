@@ -3,8 +3,12 @@ package cova.fss.config;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.client.RestTemplate;
 
+import cova.fss.dao.InventoryDao;
 import cova.fss.dao.RequestDao;
+import cova.fss.service.InvnetoryService;
+import cova.fss.rest.service.RestRequestService;
 import cova.fss.dao.UserDao;
 import cova.fss.service.LoginService;
 import cova.fss.service.RequestService;
@@ -49,6 +53,16 @@ public class BeanConfig {
 	}
 	
 	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+	
+	@Bean
+	public RestRequestService getRestRequestService() {
+		return new RestRequestService();
+	}
+	
+	@Bean
 	public LoginService getLoginService() {
 		return new LoginService();
 	}
@@ -56,6 +70,16 @@ public class BeanConfig {
 	@Bean
 	public UserDao getUserDao() {
 		return new UserDao();
+	}
+	
+	@Bean 
+	public InvnetoryService getInvnetoryService() {
+		return new InvnetoryService();
+	}
+	
+	@Bean 
+	public InventoryDao getInvnetoryDao() {
+		return new InventoryDao();
 	}
 
 }
