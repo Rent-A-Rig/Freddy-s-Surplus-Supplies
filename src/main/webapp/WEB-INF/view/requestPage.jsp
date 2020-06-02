@@ -10,7 +10,7 @@
 <body>
 
 	<h1>Orders</h1>
-<!-- model data = "requests" type = List of requestedInventory -->
+	<!-- model data = "requests" type = List of requestedInventory -->
 	<table>
 		<tr>
 			<th>ProductID</th>
@@ -18,17 +18,18 @@
 			<th>Quantity</th>
 		</tr>
 		<c:forEach var="inventory" items="${requests}">
-		<tr>
-			<td>${inventory.product_id}</td>
-			<td>${inventory.product_name}</td>
-			<td>${inventory.request_qty}</td>
-		</tr>
+			<tr>
+				<td>${inventory.product_id}</td>
+				<td>${inventory.product_name}</td>
+				<td>${inventory.request_qty}</td>
+			</tr>
 		</c:forEach>
 	</table>
 	<button type="button">Approve</button>
-	<button type="button">Deny</button><br>
-	
-<a href="home">Get back home</a>
+	<button type="button">Deny</button>
+	<br>
+
+	<a href="home">Get back home</a>
 
 
 </body>
