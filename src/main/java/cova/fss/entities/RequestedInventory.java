@@ -10,9 +10,10 @@ public class RequestedInventory {
 	private int request_qty;
 	private Date request_date;
 	private boolean fulfilled;
-	
-	public RequestedInventory() {};
-	
+
+	public RequestedInventory() {		
+	} 
+
 	public String getProduct_name() {
 		return product_name;
 	}
