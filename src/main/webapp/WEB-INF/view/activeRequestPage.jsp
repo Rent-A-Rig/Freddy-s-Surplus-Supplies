@@ -23,7 +23,7 @@
 	<div class="content">
   			<h1>Active Orders</h1>
 	<!-- model data = "requests" type = List of requestedInventory -->
-	<table id="customers">
+	<table id="products">
 		<tr>
 			<th>Product ID</th>
 			<th>Product Name</th>

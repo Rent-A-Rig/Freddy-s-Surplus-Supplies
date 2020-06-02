@@ -21,9 +21,9 @@
 	</div>
 	
 	<div class="content">
-  			<h1>FulFilled Orders</h1>
+  			<h1>Fulfilled Orders</h1>
 	<!-- model data = "requests" type = List of requestedInventory -->
-	<table id="customers">
+	<table id="products">
 		<tr>
 			<th>Product ID</th>
 			<th>Product Name</th>
