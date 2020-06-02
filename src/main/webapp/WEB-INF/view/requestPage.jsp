@@ -18,17 +18,19 @@
 			<th>Quantity</th>
 		</tr>
 		<c:forEach var="inventory" items="${requests}">
-			<form:form modelAttribute="inventory" action="requestInventory">
-				<tr>
-					<td>${inventory.product_id}</td>
-					<td>${inventory.product_name}</td>
-					<td>${inventory.request_qty}</td>
-				</tr>
-			</form:form>
+
+			<tr>
+				<td>${inventory.product_id}</td>
+				<td>${inventory.product_name}</td>
+				<td>${inventory.request_qty}</td>
+			</tr>
 		</c:forEach>
 	</table>
-	
-	<a href="home">Go back home</a>
+	<button type="button">Approve</button>
+	<button type="button">Deny</button>
+	<br>
+
+	<a href="home">Get back home</a>
 
 
 </body>
