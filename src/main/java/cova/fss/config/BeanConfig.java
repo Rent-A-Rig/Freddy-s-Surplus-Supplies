@@ -3,8 +3,10 @@ package cova.fss.config;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.client.RestTemplate;
 
 import cova.fss.dao.RequestDao;
+import cova.fss.rest.service.RestRequestService;
 import cova.fss.service.RequestService;
 
 import org.springframework.context.annotation.Bean;
@@ -44,6 +46,16 @@ public class BeanConfig {
 	@Bean
 	public RequestDao getRequestDao() {
 		return new RequestDao();
+	}
+	
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+	
+	@Bean
+	public RestRequestService getRestRequestService() {
+		return new RestRequestService();
 	}
 	
 

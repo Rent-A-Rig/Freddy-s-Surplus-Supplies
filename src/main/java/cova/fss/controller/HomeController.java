@@ -4,14 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cova.fss.entities.RequestedInventory;
+import cova.fss.rest.service.RestRequestService;
 import cova.fss.service.RequestService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	RestRequestService restRequestService;
 	
 	@Autowired
 	RequestService requestService;
@@ -40,10 +45,14 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/acceptRequest")
+	public ModelAndView acceptRequest(@ModelAttribute("requestedInventory") RequestedInventory requestedInvnetory) {
+		
+		restRequestService.acceptRequest(requestedInvnetory);
+		
+		return new ModelAndView("redirect:/activeRequest");
+	}
+	
 
 	
-	
-	
-	
-	//return previousRequest
 }
