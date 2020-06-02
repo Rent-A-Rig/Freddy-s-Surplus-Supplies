@@ -1,3 +1,4 @@
+
 package cova.fss.entities;
 
 import java.sql.Date;
@@ -63,6 +64,5 @@ public class RequestedInventory {
 		this.fulfilled = fulfilled;
 	}
 
-	
 
 }

@@ -17,16 +17,21 @@ public class HomeController {
 
 	@Autowired
 	RequestService requestService;
-
 	@Autowired
 	LoginService loginService;
 
 	@RequestMapping(value = { "/adminlogin", "/" })
+
+	
+
 	public ModelAndView login() {
 		return new ModelAndView("AdminLogin");
 	}
 
-	@RequestMapping(value = { "/home" })
+
+	
+	@RequestMapping(value = {"/home"})
+  
 	public ModelAndView home() {
 		return new ModelAndView("home");
 	}
@@ -35,7 +40,8 @@ public class HomeController {
 	public ModelAndView activeR() {
 		List<RequestedInventory> requests = requestService.getActiveRequests();
 
-		return new ModelAndView("requestPage", "requests", requests);
+		
+		return new ModelAndView("activeRequestPage", "requests", requests);
 	}
 
 	@RequestMapping(value = { "/previousRequest" })
