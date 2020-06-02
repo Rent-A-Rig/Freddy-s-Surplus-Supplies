@@ -15,7 +15,7 @@
 		<tr>
 			<th>ProductID</th>
 			<th>Product Name</th>
-			<th>Quantity</th>
+			<th>Qty</th>
 		</tr>
 		<c:forEach var="inventory" items="${requests}">
 			<form:form modelAttribute="inventory" action="requestInventory">

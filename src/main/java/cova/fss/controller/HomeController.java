@@ -22,8 +22,6 @@ public class HomeController {
 
 	@RequestMapping(value = { "/adminlogin", "/" })
 
-	
-
 	public ModelAndView login() {
 		return new ModelAndView("AdminLogin");
 	}
