@@ -71,13 +71,16 @@
 							class="btn btn-primary btn-lg btn-block login-button">Sign
 							in</button>
 					</div>
-
+					<h4>${errorMessage}</h4>
 				</form>
+
 			</div>
+
 		</div>
+
 	</div>
 
-	<p>${errorMessage}</p>
+
 
 	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 </body>

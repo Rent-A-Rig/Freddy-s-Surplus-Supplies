@@ -13,13 +13,19 @@
 
 <body>
 	<div class="sidenav">
+		<a href="home">Home</a>
   		<a href="activeRequest">Active Requests</a>
   		<a href="previousRequest">Fulfilled Requests</a>
   		<a href="inventory">Inventory</a>
+  		<a href="logout">Log out</a>
 	</div>
 
 	<div class="content">
   		<h1>Freddy's Surplus Supply</h1>
+  		
+  		<img href="<c:url var="myurl" value='/resources/images/warehouse.jpg'/>">
+  		
+  		
 	</div>
 
 </body>
