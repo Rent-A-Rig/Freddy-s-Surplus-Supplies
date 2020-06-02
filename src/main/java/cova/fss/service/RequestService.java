@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cova.fss.dao.RequestDao;
+import cova.fss.entities.Inventory;
 import cova.fss.entities.RequestedInventory;
 public class RequestService {
 	
@@ -42,6 +43,7 @@ public class RequestService {
 
 	}
 
+
 	public void updateRequest(RequestedInventory requestedInventory) {
 		
 		requestDao.updateRequestFufilled(requestedInventory);
@@ -51,6 +53,12 @@ public class RequestService {
 	public RequestedInventory getPendingInventoryRequest(String prodID) {
 		
 		return requestDao.getExistingRequest(prodID);
+	}
+
+
+	
+	public List<Inventory> getInventory() {
+		return requestDao.getInventoryRequest("inventory");
 	}
 
 }

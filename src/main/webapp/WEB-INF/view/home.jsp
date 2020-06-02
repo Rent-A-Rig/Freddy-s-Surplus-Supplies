@@ -1,23 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="<c:url value='/resources/css/mainStyles.css'/>"
+	type="text/css">
 <title>Freddy's Surplus Supply</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
+	<div class="sidenav">
+		<a href="home">Home</a>
+  		<a href="activeRequest">Active Requests</a>
+  		<a href="previousRequest">Fulfilled Requests</a>
+  		<a href="inventory">Inventory</a>
+  		<a href="logout">Log out</a>
+	</div>
 
-	<h1>Freddy's Surplus Supplies</h1>
-
-
-	<a href="activeRequest">View Active Requests</a>
-	<br>
-	<a href="previousRequest">View Previous Requests</a>
-	<br>
-	<a href="adminlogin">Back to Log-in Page</a>
-
+	<div class="content">
+  		<h1>Freddy's Surplus Supply</h1>
+  		
+  		<img href="<c:url var="myurl" value='/resources/images/warehouse.jpg'/>">
+  		
+  		
+	</div>
 
 </body>
 </html>
-

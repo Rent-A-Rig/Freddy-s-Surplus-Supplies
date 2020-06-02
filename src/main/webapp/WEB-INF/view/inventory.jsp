@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/mainStyles.css'/>"
 	type="text/css">
 	
-	<link rel="stylesheet" href="<c:url value='/resources/css/table.css'/>"
+		<link rel="stylesheet" href="<c:url value='/resources/css/table.css'/>"
 	type="text/css">
 <title>Freddy's Surplus Supply</title>
 <meta charset="utf-8">
@@ -19,17 +19,17 @@
   		<a href="activeRequest">Active Requests</a>
   		<a href="previousRequest">Fulfilled Requests</a>
   		<a href="inventory">Inventory</a>
-  		<a href="logout">Log out</a>
-  		
+  		<a href="logout">Log out</a> 		
 	</div>
 	
 	<div class="content">
-  			<h1>Fulfilled Orders</h1>
+  			<h1>Inventory</h1>
 	<!-- model data = "requests" type = List of requestedInventory -->
 	<table id="products">
 		<tr>
 			<th>Product ID</th>
 			<th>Product Name</th>
+			<th>Category</th>
 			<th>Qty</th>
 		</tr>
 			<c:forEach var="inventory" items="${requests}">
@@ -37,7 +37,8 @@
 					<tr>
 						<td>${inventory.product_id}</td>
 						<td>${inventory.product_name}</td>
-						<td>${inventory.request_qty}</td>
+						<td>${inventory.category}</td>
+						<td>${inventory.stock}
 					</tr>
 				</form:form>
 			</c:forEach>

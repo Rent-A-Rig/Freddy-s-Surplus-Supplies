@@ -6,6 +6,8 @@ public class Inventory {
 	private String product_name;
 	private String category;
 	private int stock;
+	
+	
 
 	public Inventory(String product_id, String product_name, String category, int stock) {
 		super();
@@ -15,6 +17,10 @@ public class Inventory {
 		this.stock = stock;
 	}
 
+	public Inventory() {
+		
+	}
+	
 	public String getProduct_id() {
 		return product_id;
 	}
