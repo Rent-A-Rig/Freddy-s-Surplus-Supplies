@@ -1,5 +1,8 @@
 package cova.fss.rest.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,6 +30,19 @@ public class InventoryRequestController {
 		}
 		else {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+		}
+		
+	}
+	
+	@RequestMapping(value = "/getPendingRequests", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<RequestedInventory>> requestInventory() {
+		
+		List<RequestedInventory> invRequests = requestService.getActiveRequests();
+		if (invRequests.size() > 0) {
+			return new ResponseEntity<List<RequestedInventory>>(invRequests, HttpStatus.FOUND);
+		}
+		else {
+			return new ResponseEntity<List<RequestedInventory>>(new ArrayList<RequestedInventory>(), HttpStatus.NO_CONTENT);
 		}
 		
 	}

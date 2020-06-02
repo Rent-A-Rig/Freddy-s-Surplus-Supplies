@@ -15,12 +15,21 @@ public class RestRequestService {
 	
 	private final String ACCESS_TOKEN = "1234123412341234";
 	private final String ACCEPT_REQUEST = "http://localhost:8082/Rent-A-Rig_SHOWCASE/acceptRequest";
+	private final String DENY_REQUEST = "http://localhost:8082/Rent-A-Rig_SHOWCASE/denyRequest";
 	
 	@Autowired
 	RestTemplate restTemplate;
 	
-	public ResponseEntity<Void> acceptRequest(RequestedInventory request) {
-
+	public ResponseEntity<Void> sendRequest(RequestedInventory request) {
+		
+		String url = "";
+		if (request.getFulfilled().equals("ACCEPTED")) {
+			url = ACCEPT_REQUEST;
+		}
+		else {
+			url = DENY_REQUEST;
+		}
+		
 		//set your headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -30,8 +39,15 @@ public class RestRequestService {
 		HttpEntity<RequestedInventory> entity = new HttpEntity<RequestedInventory>(request, headers);
 
 		// send it!
-		ResponseEntity<Void> out = restTemplate.exchange(ACCEPT_REQUEST, HttpMethod.GET, entity, Void.class);
+		ResponseEntity<Void> out = null;
+		try {
+			out = restTemplate.exchange(url, HttpMethod.PUT, entity, Void.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return out;	
 	}
+
 
 }

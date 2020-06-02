@@ -21,7 +21,7 @@ public class RequestDao {
 				+ " values(?,?,?,?,?)";
 
 		return jdbcTemplate.update(sql, new Object[] {ri.getProduct_name(), ri.getProduct_id(), ri.getRequest_qty(),
-				ri.getRequest_date(), false});
+				ri.getRequest_date(), "PENDING"});
 
 	}
 
@@ -32,7 +32,7 @@ public class RequestDao {
 	
 	public RequestedInventory getExistingRequest(String prodID) {
 		
-		String sql = "select * from requestedInventory where product_id = '" + prodID + "' and fulfilled = " + false;
+		String sql = "select * from requestedInventory where product_id = '" + prodID + "' and fulfilled = 'PENDING'";
 		List<RequestedInventory> riList = jdbcTemplate.query(sql, new RequestMapper());
 		if (riList.size() > 0) {
 			return riList.get(0);
@@ -49,10 +49,10 @@ public class RequestDao {
 		
         if (activeRequests.equals("active"))
         {
-            sql = "select * from requestedInventory where FULFILLED = 0;";
+            sql = "select * from requestedInventory where FULFILLED = 'PENDING'";
         }
         else {
-            sql = "select * from requestedInventory where FULFILLED = 1;";
+            sql = "select * from requestedInventory where FULFILLED != 'PENDING'";
         }
         
         List<RequestedInventory> requests = jdbcTemplate.query(sql, new RequestMapper());
@@ -60,6 +60,13 @@ public class RequestDao {
         return requests;
     }
 	
+	public void updateRequestFufilled(RequestedInventory requestedInventory) {
+		String sql = "UPDATE requestedInventory SET FULFILLED = '" + requestedInventory.getFulfilled() + "' WHERE "
+				+ "REQUEST_ID = " + requestedInventory.getRequest_id();
+		
+		int rows = jdbcTemplate.update(sql);
+		
+	}
 	
 	
 	class RequestMapper implements RowMapper<RequestedInventory> {
@@ -72,12 +79,16 @@ public class RequestDao {
 			ri.setProduct_name(rs.getString("product_name"));
 			ri.setRequest_date(rs.getDate("request_date"));
 			ri.setRequest_qty(rs.getInt("request_qty"));
-			ri.setFulfilled(rs.getBoolean("fulfilled"));
+			ri.setFulfilled(rs.getString("fulfilled"));
 			ri.setRequest_id(rs.getInt("request_id"));
 
 			return ri;
 		}
 
 	}
+
+
+
+	
 
 }

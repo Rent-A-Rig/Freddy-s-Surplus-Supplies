@@ -41,4 +41,16 @@ public class RequestService {
 		return requestDao.getRequests("active");
 
 	}
+
+	public void updateRequest(RequestedInventory requestedInventory) {
+		
+		requestDao.updateRequestFufilled(requestedInventory);
+		
+	}
+
+	public RequestedInventory getPendingInventoryRequest(String prodID) {
+		
+		return requestDao.getExistingRequest(prodID);
+	}
+
 }

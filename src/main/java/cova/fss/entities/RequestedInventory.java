@@ -10,7 +10,7 @@ public class RequestedInventory {
 	private String product_name;
 	private int request_qty;
 	private Date request_date;
-	private boolean fulfilled;
+	private String fulfilled;
 	
 
 	public RequestedInventory() {};
@@ -64,11 +64,11 @@ public class RequestedInventory {
 		this.request_date = request_date;
 	}
 
-	public boolean isFulfilled() {
+	public String getFulfilled() {
 		return fulfilled;
 	}
 
-	public void setFulfilled(boolean fulfilled) {
+	public void setFulfilled(String fulfilled) {
 		this.fulfilled = fulfilled;
 	}
 
