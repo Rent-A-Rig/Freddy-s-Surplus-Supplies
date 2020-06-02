@@ -42,9 +42,9 @@ public class HomeController {
 	@RequestMapping(value = { "/activeRequest" })
 	public ModelAndView activeR() {
 		List<RequestedInventory> requests = requestService.getActiveRequests();
-
-		
-		return new ModelAndView("activeRequestPage", "requests", requests);
+		ModelAndView mv = new ModelAndView("activeRequestPage", "requests", requests);
+		mv.addObject("returnRequest", new RequestedInventory());
+		return mv;
 	}
 
 	@RequestMapping(value = { "/previousRequest" })
@@ -56,11 +56,16 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value = "/acceptRequest")
-	public ModelAndView acceptRequest(@ModelAttribute("requestedInventory") RequestedInventory requestedInvnetory) {
+	@RequestMapping(value = "/requestInventory")
+	public ModelAndView acceptRequest(
+			@ModelAttribute("requestedInventory") RequestedInventory requestedInvnetory,
+			@RequestParam(required = false, value = "accept") String acceptFlag, 
+			@RequestParam(required = false, value = "deny") String denyFlag) {
 		
-		restRequestService.acceptRequest(requestedInvnetory);
-		
+		restRequestService.requestHandler(requestedInvnetory, "accept");
+		restRequestService.requestHandler(requestedInvnetory, "deny");
+		System.out.println(acceptFlag);
+		System.out.println(denyFlag);
 		return new ModelAndView("redirect:/activeRequest");
 	}
 

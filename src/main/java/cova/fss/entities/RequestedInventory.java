@@ -16,6 +16,14 @@ public class RequestedInventory {
 	public RequestedInventory() {};
 	
 
+	@Override
+	public String toString() {
+		return "RequestedInventory [request_id=" + request_id + ", product_id=" + product_id + ", product_name="
+				+ product_name + ", request_qty=" + request_qty + ", request_date=" + request_date + ", fulfilled="
+				+ fulfilled + "]";
+	}
+
+
 	public String getProduct_name() {
 		return product_name;
 	}

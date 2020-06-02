@@ -34,11 +34,11 @@ public class RequestDao {
 		
 		String sql = "select * from requestedInventory where product_id = '" + prodID + "' and fulfilled = " + false;
 		List<RequestedInventory> riList = jdbcTemplate.query(sql, new RequestMapper());
-		if (riList.size() == 0) {
-			return null;
+		if (riList.size() > 0) {
+			return riList.get(0);
 		}
 		else {
-			return riList.get(0);
+			return null;
 		}
 		
 	}
