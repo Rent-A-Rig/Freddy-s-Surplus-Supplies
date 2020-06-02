@@ -26,7 +26,7 @@ public class HomeController {
 	public ModelAndView activeR() {
 		List<RequestedInventory> requests = requestService.getActiveRequests();
 		
-		return new ModelAndView("requestPage", "requests", requests);
+		return new ModelAndView("activeRequestPage", "requests", requests);
 	}
 	
 	
