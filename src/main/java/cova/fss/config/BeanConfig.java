@@ -7,6 +7,8 @@ import org.springframework.web.client.RestTemplate;
 
 import cova.fss.dao.RequestDao;
 import cova.fss.rest.service.RestRequestService;
+import cova.fss.dao.UserDao;
+import cova.fss.service.LoginService;
 import cova.fss.service.RequestService;
 
 import org.springframework.context.annotation.Bean;
@@ -58,5 +60,14 @@ public class BeanConfig {
 		return new RestRequestService();
 	}
 	
+	@Bean
+	public LoginService getLoginService() {
+		return new LoginService();
+	}
+	
+	@Bean
+	public UserDao getUserDao() {
+		return new UserDao();
+	}
 
 }

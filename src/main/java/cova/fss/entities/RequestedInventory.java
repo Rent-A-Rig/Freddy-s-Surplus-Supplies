@@ -1,3 +1,4 @@
+
 package cova.fss.entities;
 
 import java.sql.Date;
@@ -11,8 +12,10 @@ public class RequestedInventory {
 	private Date request_date;
 	private boolean fulfilled;
 	
+
 	public RequestedInventory() {};
 	
+
 	public String getProduct_name() {
 		return product_name;
 	}
@@ -61,6 +64,5 @@ public class RequestedInventory {
 		this.fulfilled = fulfilled;
 	}
 
-	
 
 }

@@ -22,21 +22,13 @@ REQUEST_DATE DATE NOT NULL,
 FULFILLED BOOLEAN NOT NULL,
 Primary Key (REQUEST_ID));
 
-INSERT INTO inventory (product_id, product_name, category, stock)  
-VALUES 
+DROP TABLE IF EXISTS adminLogin;
+Create table adminLogin (
+uname varchar(10),
+pword varchar(15),
+primary key(uname));
 
-('111', 'freddy','crust',100),
-
-('222', 'justin','crust', 100),
-
-('333', 'romy','crust', 100);
-
-
-INSERT INTO requestedInventory (request_id, PRODUCT_NAME, product_id, request_qty, request_date, fulfilled)  
-VALUES 
-(request_id, "joe", '111', 50, '2020-03-06', 1),
-
-(request_id, "joe2", '222', 50, '2020-06-10', 0),
-
-(request_id, "joe3",'333', 50, '2020-02-01', 1);
+insert into adminLogin(uname, pword)
+values 
+('admin', 'admin');
 
