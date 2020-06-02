@@ -4,6 +4,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import cova.fss.entities.Inventory;
 import cova.fss.entities.RequestedInventory;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,26 @@ public class RequestDao {
         {
             sql = "select * from requestedInventory where FULFILLED = 0;";
         }
-        else {
+        else
+        {
             sql = "select * from requestedInventory where FULFILLED = 1;";
-        }
-        
+        } 
+
         List<RequestedInventory> requests = jdbcTemplate.query(sql, new RequestMapper());
         
         return requests;
     }
 	
+	public List<Inventory> getInventoryRequest(String inventoryRequests) {
+		String sql = "";
+		if (inventoryRequests.equals("inventory"))
+		{
+			sql = "select * from inventory";
+		}
+		
+		List<Inventory> inventory = jdbcTemplate.query(sql, new InventoryMapper());
+		return inventory;
+	}
 	
 	
 	class RequestMapper implements RowMapper<RequestedInventory> {
@@ -78,6 +90,22 @@ public class RequestDao {
 			return ri;
 		}
 
+	}
+	
+	class InventoryMapper implements RowMapper<Inventory> {
+
+		
+		public Inventory mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Inventory inv = new Inventory();
+			
+			inv.setProduct_id(rs.getString("product_id"));
+			inv.setProduct_name(rs.getString("product_name"));
+			inv.setCategory(rs.getString("category"));
+			inv.setStock(rs.getInt("stock"));
+			
+			return inv;
+		}
+		
 	}
 
 }

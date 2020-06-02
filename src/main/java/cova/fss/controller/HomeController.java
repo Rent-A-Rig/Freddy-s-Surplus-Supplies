@@ -2,11 +2,14 @@ package cova.fss.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import cova.fss.entities.Inventory;
 import cova.fss.entities.RequestedInventory;
 import cova.fss.entities.User;
 import cova.fss.service.LoginService;
@@ -26,10 +29,7 @@ public class HomeController {
 		return new ModelAndView("AdminLogin");
 	}
 
-
-	
 	@RequestMapping(value = {"/home"})
-  
 	public ModelAndView home() {
 		return new ModelAndView("home");
 	}
@@ -49,6 +49,13 @@ public class HomeController {
 
 		return new ModelAndView("requestPage", "requests", requests);
 
+	}
+	
+	@RequestMapping(value= {"/inventory"})
+	public ModelAndView displayInventory() {
+		List<Inventory> inventory = requestService.getInventory();
+		
+		return new ModelAndView("inventory", "requests", inventory);
 	}
 
 	@RequestMapping(value = { "/validLogin" })
