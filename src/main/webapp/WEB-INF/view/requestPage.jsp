@@ -6,6 +6,9 @@
 <head>
 <link rel="stylesheet" href="<c:url value='/resources/css/mainStyles.css'/>"
 	type="text/css">
+	
+	<link rel="stylesheet" href="<c:url value='/resources/css/table.css'/>"
+	type="text/css">
 <title>Freddy's Surplus Supply</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,11 +21,11 @@
 	</div>
 	
 	<div class="content">
-  			<h1>FulFilled Orders</h1>
+  			<h1>Fulfilled Orders</h1>
 	<!-- model data = "requests" type = List of requestedInventory -->
-	<table>
+	<table id="products">
 		<tr>
-			<th>ProductID</th>
+			<th>Product ID</th>
 			<th>Product Name</th>
 			<th>Qty</th>
 		</tr>
