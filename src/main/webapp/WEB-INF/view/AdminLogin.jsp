@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -31,7 +33,7 @@
 	               	</div>
 	            </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post" action="validLogin">
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
@@ -53,13 +55,15 @@
 						</div>
 
 						<div class="form-group ">
-							<button onclick="document.location = 'home'" type="button" class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
+							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
 						</div>
 
 					</form>
 				</div>
 			</div>
 		</div>
+		
+		<p>${errorMessage}</p>
 
 		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 	</body>

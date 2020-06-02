@@ -5,6 +5,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import cova.fss.dao.RequestDao;
+import cova.fss.dao.UserDao;
+import cova.fss.service.LoginService;
 import cova.fss.service.RequestService;
 
 import org.springframework.context.annotation.Bean;
@@ -46,5 +48,14 @@ public class BeanConfig {
 		return new RequestDao();
 	}
 	
+	@Bean
+	public LoginService getLoginService() {
+		return new LoginService();
+	}
+	
+	@Bean
+	public UserDao getUserDao() {
+		return new UserDao();
+	}
 
 }
