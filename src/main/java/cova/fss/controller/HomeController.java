@@ -28,7 +28,13 @@ public class HomeController {
 	public ModelAndView login() {
 		return new ModelAndView("AdminLogin");
 	}
+	
+	@RequestMapping(value = { "/logout"})
 
+	public ModelAndView logout() {
+		return new ModelAndView("AdminLogin");
+	}
+	
 	@RequestMapping(value = {"/home"})
 	public ModelAndView home() {
 		return new ModelAndView("home");
