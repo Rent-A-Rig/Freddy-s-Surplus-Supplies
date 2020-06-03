@@ -47,6 +47,32 @@ public class InventoryRequestController {
 		
 	}
 	
+	@RequestMapping(value = "/getFulfilledRequests", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<RequestedInventory>> getFulfilledRequests() {
+		
+		List<RequestedInventory> invRequests = requestService.getPreviousRequests();
+		if (invRequests.size() > 0) {
+			return new ResponseEntity<List<RequestedInventory>>(invRequests, HttpStatus.FOUND);
+		}
+		else {
+			return new ResponseEntity<List<RequestedInventory>>(new ArrayList<RequestedInventory>(), HttpStatus.NO_CONTENT);
+		}
+		
+	}
+	
+	@RequestMapping(value = "/getAllRequests", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<RequestedInventory>> getAllRequests() {
+		
+		List<RequestedInventory> invRequests = requestService.getAllRequests();
+		if (invRequests.size() > 0) {
+			return new ResponseEntity<List<RequestedInventory>>(invRequests, HttpStatus.FOUND);
+		}
+		else {
+			return new ResponseEntity<List<RequestedInventory>>(new ArrayList<RequestedInventory>(), HttpStatus.NO_CONTENT);
+		}
+		
+	}
+	
 	
 
 }
