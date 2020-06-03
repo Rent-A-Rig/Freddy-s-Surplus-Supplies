@@ -52,8 +52,11 @@ public class RequestDao {
         {
             sql = "select * from requestedInventory where FULFILLED = 'PENDING'";
         }
-        else {
+        else if (activeRequests.contentEquals("previous")) {
             sql = "select * from requestedInventory where FULFILLED != 'PENDING'";
+        }
+        else {
+        	sql = "select * from requestedInventory";
         }
         
         List<RequestedInventory> requests = jdbcTemplate.query(sql, new RequestMapper());

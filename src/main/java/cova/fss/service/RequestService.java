@@ -61,4 +61,8 @@ public class RequestService {
 		return requestDao.getInventoryRequest("inventory");
 	}
 
+	public List<RequestedInventory> getAllRequests() {
+		return requestDao.getRequests("all");
+	}
+
 }
