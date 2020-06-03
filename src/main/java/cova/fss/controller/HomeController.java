@@ -85,6 +85,7 @@ public class HomeController {
 		}
 		else if (denyFlag != null && acceptFlag == null) {
 			requestedInventory.setFulfilled("DENIED");
+			requestedInventory.setRequest_qty(0);
 		}
 		
 		ResponseEntity<Void> out = restRequestService.sendRequest(requestedInventory);
