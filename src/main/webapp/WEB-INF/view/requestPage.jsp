@@ -31,6 +31,7 @@
 			<th>Product ID</th>
 			<th>Product Name</th>
 			<th>Qty</th>
+			<th>Status</th>
 		</tr>
 			<c:forEach var="inventory" items="${requests}">
 				<form:form modelAttribute="inventory" action="requestInventory">
@@ -38,6 +39,7 @@
 						<td>${inventory.product_id}</td>
 						<td>${inventory.product_name}</td>
 						<td>${inventory.request_qty}</td>
+						<td>${inventory.fulfilled}
 					</tr>
 				</form:form>
 			</c:forEach>
