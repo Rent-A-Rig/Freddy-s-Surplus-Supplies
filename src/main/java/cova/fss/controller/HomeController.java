@@ -71,21 +71,26 @@ public class HomeController {
 	
 	@RequestMapping(value = "/requestInventory")
 	public ModelAndView acceptRequest(
-			@ModelAttribute("requestedInventory") RequestedInventory requestedInvnetory,
+			@ModelAttribute("requestedInventory") RequestedInventory requestedInventory,
 			@RequestParam(required = false, value = "accept") String acceptFlag, 
 			@RequestParam(required = false, value = "deny") String denyFlag) {
 		
+		Inventory inv = inventoryService.getInventory(requestedInventory.getProduct_id());
+		
 		if (acceptFlag != null && denyFlag == null) {
-			requestedInvnetory.setFulfilled("ACCEPTED");
+			if (requestedInventory.getRequest_qty() > inv.getStock()) {
+				return new ModelAndView("redirect:/activeRequest");
+			}
+			requestedInventory.setFulfilled("ACCEPTED");
 		}
 		else if (denyFlag != null && acceptFlag == null) {
-			requestedInvnetory.setFulfilled("DENIED");
+			requestedInventory.setFulfilled("DENIED");
 		}
 		
-		ResponseEntity<Void> out = restRequestService.sendRequest(requestedInvnetory);
+		ResponseEntity<Void> out = restRequestService.sendRequest(requestedInventory);
 		if (out.getStatusCode() == HttpStatus.ACCEPTED) {
-			inventoryService.updateInventory(requestedInvnetory.getProduct_id(), requestedInvnetory.getRequest_qty());
-			requestService.updateRequest(requestedInvnetory);
+			inventoryService.updateInventory(requestedInventory.getProduct_id(), requestedInventory.getRequest_qty());
+			requestService.updateRequest(requestedInventory);
 		}
 		
 		return new ModelAndView("redirect:/activeRequest");

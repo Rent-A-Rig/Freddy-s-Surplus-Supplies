@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import cova.fss.entities.Inventory;
+
 public class InventoryDao {
 	
 	@Autowired
@@ -31,6 +33,26 @@ public class InventoryDao {
 			return false;
 		}
 		
+	}
+
+	public Inventory getInventory(String product_id) {
+		
+		String sql = "SELECT * FROM inventory WHERE product_id = '" + product_id + "'";
+		return jdbcTemplate.queryForObject(sql, new RowMapper<Inventory>() {
+
+			public Inventory mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				Inventory inv = new Inventory();
+				
+				inv.setProduct_id(rs.getString("PRODUCT_ID"));
+				inv.setProduct_name(rs.getString("PRODUCT_NAME"));
+				inv.setCategory(rs.getString("CATEGORY"));
+				inv.setStock(rs.getInt("STOCK"));
+				
+				return inv;
+			}
+			
+		});
 	}
 
 }
